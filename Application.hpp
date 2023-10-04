@@ -1,6 +1,8 @@
 #ifndef APPLICATION_HPP
 # define APPLICATION_HPP
 
+# include <sstream>
+
 # include "Commands/Command.hpp"
 # include "Parser.hpp"
 // # include "Registries/CommandRegistry.hpp"

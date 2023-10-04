@@ -14,10 +14,25 @@ ShapeRegistry::ShapeRegistry()
 
 ShapeRegistry::~ShapeRegistry()
 {
-    
+
 }
 
 void    ShapeRegistry::registerShape(std::string shapeType, ShapeCtor constructor)
 {    
     _shape_constructors[shapeType] = constructor;
+}
+
+std::vector<Shape *>   ShapeRegistry::getCurrentShapes()
+{
+    return _current_shapes;
+}
+
+ShapeCtorMap   ShapeRegistry::getShapeCtorMap()
+{
+    return _shape_constructors;
+}
+
+void    ShapeRegistry::updateCurrentShapes(Shape *new_shape)
+{
+    _current_shapes.push_back(new_shape);
 }

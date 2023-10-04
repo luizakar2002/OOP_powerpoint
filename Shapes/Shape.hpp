@@ -1,6 +1,7 @@
 #ifndef SHAPE_HPP
 # define SHAPE_HPP
 
+# include <iostream>
 # include <unordered_map>
 
 using OptionsValues = std::unordered_map<std::string, std::string>;
@@ -8,9 +9,9 @@ using OptionsValues = std::unordered_map<std::string, std::string>;
 class Shape
 {
     public:
-        virtual ~Shape();
+        virtual ~Shape() {};
 
-        // virtual void display() = 0;
+        virtual void display() = 0;
 };
 
 #endif /*SHAPE_HPP*/

@@ -8,6 +8,7 @@
 
 # include "Commands/Command.hpp"
 # include "Commands/AddCommand.hpp"
+# include "Commands/DisplayCommand.hpp"
 
 using InputVector = std::vector<std::string>;
 using OptionsValues = std::unordered_map<std::string, std::string>;
@@ -24,13 +25,12 @@ class Parser
     public:
         Parser();
         Parser(const Parser &);
-        Parser(InputVector);
         ~Parser();
 
         Parser &operator=(const Parser &);
 
     public:
-        Command    *parse();
+        Command    *parse(InputVector);
         void        parse_main_command();
         void        parse_operands();
 

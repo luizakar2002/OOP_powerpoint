@@ -2,20 +2,13 @@
 
 Parser::Parser()
 {
-
+    _command_registry["Add"] = new AddCommand();
+    _command_registry["Display"] = new DisplayCommand();
 }
 
 Parser::Parser(const Parser &other)
 {
 
-}
-
-Parser::Parser(InputVector input)
-{
-    _command_line = input;
-    _command_registry["Add"] = new AddCommand();
-    // for (auto word: _command_line)
-    //     std::cout << word << std::endl;
 }
 
 Parser::~Parser()
@@ -53,19 +46,21 @@ void    Parser::parse_operands()
 {
     for (auto it = _command_line.begin(); it != _command_line.end(); it += 2)
     {
-        try
-        {
-            _options_values_map[*it] = std::stod(*(it + 1));
-        }
-        catch(...)
-        {
-            std::cerr << "Invalid operand! See HELP." << '\n';
-        }
+        // try
+        // {
+            _options_values_map[*it] = *(it + 1);
+            // _options_values_map[*it] = std::stod(*(it + 1));
+        // }
+        // catch(...)
+        // {
+        //     std::cerr << "Invalid operand! See HELP." << '\n';
+        // }
     }
 }
 
-Command    *Parser::parse()
+Command    *Parser::parse(InputVector input)
 {
+    _command_line = input;
     parse_main_command();
     parse_operands();
     _command_registry[_main_command]->setOptionsValues(_options_values_map);

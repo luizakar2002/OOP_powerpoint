@@ -9,10 +9,10 @@ class Triangle : public Shape
         OptionsValues       _opt; // TEMPORARY, later pos, line style and so on should be extracted from opt and kept seperately
     public:
         Triangle(OptionsValues);
-        virtual ~Triangle();
+        virtual ~Triangle() {};
 
     public:
-        
+        void    display() override;
 
 };
 

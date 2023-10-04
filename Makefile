@@ -1,6 +1,6 @@
 NAME        = hw
 
-SRCS        = $(wildcard *.cpp)
+SRCS        = $(wildcard *.cpp) $(wildcard */*.cpp)
 OBJS        = $(SRCS:.cpp=.o)
 CC          = c++ 
 FLAGS		= -Wall -Werror -Wextra

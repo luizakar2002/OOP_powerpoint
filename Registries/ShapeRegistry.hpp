@@ -22,8 +22,10 @@ class ShapeRegistry
         ~ShapeRegistry();
 
     public:
-        void registerShape(std::string , ShapeCtor );
-
+        void                    registerShape(std::string , ShapeCtor );
+        std::vector<Shape *>    getCurrentShapes();
+        ShapeCtorMap            getShapeCtorMap();
+        void                    updateCurrentShapes(Shape *);
 };
 
 #endif /*REGISTRIES_SHAPEREGISTRY_HPP*/
