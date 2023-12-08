@@ -4,4 +4,4 @@ A simple powerpoint for manipulating shapes using Qt.
 
 ## Demo
 
-![Demo](media/demo.mp4)
+[![Demo Video](media/demo.mp4)](media/demo.mp4)
