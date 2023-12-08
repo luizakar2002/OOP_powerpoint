@@ -1,14 +1,13 @@
-#ifndef TRIANGLE_HPP
-# define TRIANGLE_HPP
+#ifndef RECTANGLE_HPP
+# define RECTANGLE_HPP
 
 # include "ShapeBase.hpp"
-# include <QPolygon>
 
-class Triangle : public ShapeBase
+class Rectangle : public ShapeBase
 {
 public:
-    Triangle(const QRect &rect);
-    Triangle(OptionsValues);
+    Rectangle(const QRect &rect);
+    Rectangle(OptionsValues);
 
 public:
     void draw(QPainter &painter) const override;
@@ -20,10 +19,9 @@ public:
     bool    isOnResizeHandle(const QPoint &pos) const override;
     QPen    getStyledPen(const OptionsValues &_opt) const override;
 
-
 private:
-    QRect               rect;
+    QRect rect;
     OptionsValues       _opt;
 };
 
-#endif /* TRIANGLE_HPP */
+#endif /* RECTANGLE_HPP */

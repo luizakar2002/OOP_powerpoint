@@ -39,7 +39,7 @@ void    Parser::parse_main_command()
     {
         std::cerr << invalid.what() << std::endl;
     }
-    
+
 }
 
 void    Parser::parse_operands()
@@ -48,8 +48,8 @@ void    Parser::parse_operands()
     {
         // try
         // {
-            _options_values_map[*it] = *(it + 1);
-            // _options_values_map[*it] = std::stod(*(it + 1));
+        _options_values_map[*it] = *(it + 1);
+        // _options_values_map[*it] = std::stod(*(it + 1));
         // }
         // catch(...)
         // {

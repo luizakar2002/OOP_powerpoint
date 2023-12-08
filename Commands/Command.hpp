@@ -9,13 +9,13 @@ class ShapeRegistry;
 
 class Command
 {
-    private:
-        // OptionsValues   _options_values;
-    public:
-        virtual ~Command() {};
+private:
+         // OptionsValues   _options_values;
+public:
+    virtual ~Command() {}
 
-        virtual void execute(ShapeRegistry &) = 0;
-        virtual void setOptionsValues(OptionsValues) = 0;
+    virtual void execute(ShapeRegistry &) = 0;
+    virtual void setOptionsValues(OptionsValues) = 0;
 };
 
 # include "../Registries/ShapeRegistry.hpp"

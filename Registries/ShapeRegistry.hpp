@@ -4,28 +4,39 @@
 # include <iostream>
 # include <map>
 # include <vector>
+# include <QVector>
 # include <functional>
+# include <QObject>
+
 
 # include "../Shapes/Triangle.hpp"
 # include "../Shapes/Circle.hpp"
+# include "../Shapes/Rectangle.hpp"
 
-using ShapeCtor = std::function< Shape*(OptionsValues)>;
+using ShapeCtor = std::function<std::unique_ptr<ShapeBase>(OptionsValues)>;
 using ShapeCtorMap = std::map< std::string, ShapeCtor >;
+using CurrentShapes = QVector<std::shared_ptr<ShapeBase>>;
 
-class ShapeRegistry
+class ShapeRegistry: public QObject
 {
-    private:
-        std::vector<Shape *>     _current_shapes;
-        ShapeCtorMap             _shape_constructors;
-    public:
-        ShapeRegistry();
-        ~ShapeRegistry();
+    Q_OBJECT
 
-    public:
-        void                    registerShape(std::string , ShapeCtor );
-        std::vector<Shape *>    getCurrentShapes();
-        ShapeCtorMap            getShapeCtorMap();
-        void                    updateCurrentShapes(Shape *);
+private:
+    CurrentShapes    _current_shapes;
+    ShapeCtorMap     _shape_constructors;
+
+public:
+    ShapeRegistry();
+    ~ShapeRegistry();
+
+public:
+    void             registerShape(std::string , ShapeCtor );
+    CurrentShapes    getCurrentShapes();
+    ShapeCtorMap     getShapeCtorMap();
+    void             pushBackCurrentShapes(std::unique_ptr<ShapeBase> shape);
+
+signals:
+    void shapeAdded();
 };
 
 #endif /*REGISTRIES_SHAPEREGISTRY_HPP*/

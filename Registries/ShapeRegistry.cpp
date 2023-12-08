@@ -2,13 +2,18 @@
 
 ShapeRegistry::ShapeRegistry()
 {
-    registerShape("Triangle", [](OptionsValues operands) {
-        return new Triangle(operands);
+    registerShape("Triangle", [](OptionsValues operands)
+    {
+        return std::make_unique<Triangle>(operands);
     });
-    registerShape("Circle", [](OptionsValues operands) {
-        return new Circle(operands);
+    registerShape("Circle", [](OptionsValues operands)
+    {
+        return std::make_unique<Circle>(operands);
     });
-
+    registerShape("Rectangle", [](OptionsValues operands)
+    {
+        return std::make_unique<Rectangle>(operands);
+    });
 
 }
 
@@ -18,11 +23,11 @@ ShapeRegistry::~ShapeRegistry()
 }
 
 void    ShapeRegistry::registerShape(std::string shapeType, ShapeCtor constructor)
-{    
+{
     _shape_constructors[shapeType] = constructor;
 }
 
-std::vector<Shape *>   ShapeRegistry::getCurrentShapes()
+CurrentShapes   ShapeRegistry::getCurrentShapes()
 {
     return _current_shapes;
 }
@@ -32,7 +37,8 @@ ShapeCtorMap   ShapeRegistry::getShapeCtorMap()
     return _shape_constructors;
 }
 
-void    ShapeRegistry::updateCurrentShapes(Shape *new_shape)
+void ShapeRegistry::pushBackCurrentShapes(std::unique_ptr<ShapeBase> shape)
 {
-    _current_shapes.push_back(new_shape);
+    _current_shapes.push_back(std::move(shape));
+    emit shapeAdded();
 }

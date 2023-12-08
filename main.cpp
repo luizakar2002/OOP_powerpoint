@@ -1,13 +1,13 @@
-# include "Parser.hpp"
-# include "Application.hpp"
+#include <QApplication>
+#include <limits>
+#include "mainwindow.hpp"
+# include <QDebug>
 
-int main(int argc, char **argv)
-{
-    // InputVector input(argv + 1, argv + argc);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
-    // Parser      parser(input);
-    // parser.parse();
+    MainWindow mainWindow;
+    mainWindow.show();
 
-    Application app;
-    app.run();
+    return app.exec();
 }

@@ -16,31 +16,31 @@ using CommandRegistry = std::unordered_map<std::string, Command*>;
 
 class Parser
 {
-    private:
-        std::string     _main_command;
-        InputVector     _command_line;
-        OptionsValues   _options_values_map;
-        CommandRegistry _command_registry;
+private:
+    std::string     _main_command;
+    InputVector     _command_line;
+    OptionsValues   _options_values_map;
+    CommandRegistry _command_registry;
 
-    public:
-        Parser();
-        Parser(const Parser &);
-        ~Parser();
+public:
+    Parser();
+    Parser(const Parser &);
+    ~Parser();
 
-        Parser &operator=(const Parser &);
+    Parser &operator=(const Parser &);
 
-    public:
-        Command    *parse(InputVector);
-        void        parse_main_command();
-        void        parse_operands();
+public:
+    Command    *parse(InputVector);
+    void        parse_main_command();
+    void        parse_operands();
 
-    public:
+public:
     class InvalidCommand : public std::exception {
-        public:
-            const char *what()
-            {
-                return "Command is invalid! See HELP.";
-            }
+    public:
+        const char *what()
+        {
+            return "Command is invalid! See HELP.";
+        }
     };
 };
 
