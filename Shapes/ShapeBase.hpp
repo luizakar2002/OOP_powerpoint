@@ -10,8 +10,10 @@
 
 using OptionsValues = std::unordered_map<std::string, std::string>;
 
+// TK: Where are you usiong this enum, If you are using dynamic ploymorphysm, why you need this?
 enum class Shape { Rectangle, Circle, Triangle };
 
+// TK: What is the true purpose of the ShapeBase, is it for drawing, keeping into document, interactive editing?
 class ShapeBase
 {
 public:
