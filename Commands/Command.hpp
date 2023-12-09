@@ -14,6 +14,8 @@ private:
 public:
     virtual ~Command() {}
 
+    // [TK] Only few commands may use ShapeRegistry, why it is passed as an argument to execute?
+    // For example what should do with it Display command?
     virtual void execute(ShapeRegistry &) = 0;
     virtual void setOptionsValues(OptionsValues) = 0;
 };
