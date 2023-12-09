@@ -22,6 +22,8 @@ class ShapeRegistry: public QObject
     Q_OBJECT
 
 private:
+    // [TK] What is the meaning of the _current_shapes?
+    // what's that got to do here?
     CurrentShapes    _current_shapes;
     ShapeCtorMap     _shape_constructors;
 
@@ -31,9 +33,10 @@ public:
 
 public:
     void             registerShape(std::string , ShapeCtor );
-    CurrentShapes    getCurrentShapes();
-    ShapeCtorMap     getShapeCtorMap();
-    void             pushBackCurrentShapes(std::unique_ptr<ShapeBase> shape);
+    CurrentShapes    getCurrentShapes(); //???
+    ShapeCtorMap     getShapeCtorMap(); // [TK] You should not expose your internal implementation, instead provide direct factory method
+    // i.e std::unique_ptr<ShapeBase> Create(ShapeType, OptionsValues);
+    void             pushBackCurrentShapes(std::unique_ptr<ShapeBase> shape); //???
 
 signals:
     void shapeAdded();
