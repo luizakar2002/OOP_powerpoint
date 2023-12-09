@@ -32,10 +32,12 @@ void    AddCommand::execute(ShapeRegistry &shape_reg)
         std::cerr << e.what() << '\n';
     }
 
+    // [TK] new_shape (nullptr) will be inserted even if error happened
     shape_reg.pushBackCurrentShapes(std::move(new_shape));
     // std::cout << "SHAPE REG SIZE IN ADD " << shape_reg.getCurrentShapes().size() << std::endl;
 }
 
+// [TK] This method is not specific to Add command, it could belong to the Command base class
 void    AddCommand::setOptionsValues(OptionsValues opt)
 {
     _options_values = opt;
