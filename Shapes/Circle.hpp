@@ -7,7 +7,9 @@
 class Circle : public ShapeBase
 {
 public:
+    // [TK] Where used this constructor?
     Circle(const QRect &rect);
+    // [TK] User can't change OptionValues later, why there is two contradicting constructors, why there is no simple setters for the Rect and OptionValues ?
     Circle(OptionsValues);
 
 public:
@@ -21,6 +23,7 @@ public:
     QPen    getStyledPen(const OptionsValues &_opt) const override;
 
 private:
+    // [TK] Why those memebers aren't in the Base class?
     QRect rect;
     OptionsValues       _opt;
 };
