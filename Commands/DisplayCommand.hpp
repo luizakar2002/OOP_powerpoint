@@ -1,20 +1,18 @@
-#ifndef DISPLAYCOMMAND_HPP
-# define DISPLAYCOMMAND_HPP
+// #ifndef DISPLAYCOMMAND_HPP
+// # define DISPLAYCOMMAND_HPP
 
-# include "Command.hpp"
+// # include "Command.hpp"
 
-class DisplayCommand : public Command
-{
-private:
-    OptionsValues   _options_values;
-public:
-    DisplayCommand();
-    DisplayCommand(OptionsValues);
-    virtual ~DisplayCommand();
+// class DisplayCommand : public Command
+// {
+// private:
+//     OptionsValues   _options_values;
+// public:
+//     DisplayCommand() = default;
+//     virtual ~DisplayCommand() = default;
 
-public:
-    void    execute(ShapeRegistry &) override;
-    void    setOptionsValues(OptionsValues) override;
-};
+// public:
+//     void    execute() override;
+// };
 
-#endif /*DISPLAYCOMMAND_HPP*/
+// #endif /*DISPLAYCOMMAND_HPP*/

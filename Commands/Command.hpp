@@ -1,25 +1,27 @@
-#ifndef COMMAND_HPP
-# define COMMAND_HPP
+#ifndef COMMAND_COMMAND_HPP
+# define COMMAND_COMMAND_HPP
 
 # include <iostream>
+# include <memory>
 # include <unordered_map>
 
 using OptionsValues = std::unordered_map<std::string, std::string>;
-class ShapeRegistry;
 
 class Command
 {
-private:
-         // OptionsValues   _options_values;
+protected:
+    OptionsValues   _options_values;
 public:
+    Command() = default;
     virtual ~Command() {}
 
-    // [TK] Only few commands may use ShapeRegistry, why it is passed as an argument to execute?
-    // For example what should do with it Display command?
-    virtual void execute(ShapeRegistry &) = 0;
-    virtual void setOptionsValues(OptionsValues) = 0;
+    virtual void execute() = 0;
+    virtual void setOptionsValues(const OptionsValues &optionsValues)
+    {
+        _options_values = std::move(optionsValues);
+    }
 };
 
-# include "../Registries/ShapeRegistry.hpp"
+using CommandPtr = std::unique_ptr<Command>;
 
-#endif /*COMMAND_HPP*/
+#endif /*COMMAND_COMMAND_HPP*/

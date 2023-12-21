@@ -1,13 +1,12 @@
-#include <QApplication>
-#include <limits>
-#include "mainwindow.hpp"
-# include <QDebug>
+# include "Qt/Application.hpp"
+# include "Qt/MainWindow.hpp"
 
-int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+int main(int argc, char *argv[])
+{
+    Application app(argc,argv);
+    MainWindow main_window;
 
-    MainWindow mainWindow;
-    mainWindow.show();
+    main_window.show();
 
-    return app.exec();
+    return Application::instance()->exec();
 }
