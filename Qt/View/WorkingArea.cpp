@@ -27,21 +27,21 @@ void WorkingArea::onDocumentChanged()
 
 void WorkingArea::setRectangleShape()
 {
-    ItemPtrUnique new_raw_item = Application::instance()->get_itemFactory().create_raw_Item("Rectangle");
+    ItemPtrUnique new_raw_item = std::make_unique<Item>(ItemType::Rectangle);
     Application::instance()->get_current_slide()->add_item(std::move(new_raw_item));
     update();
 }
 
 void WorkingArea::setCircleShape()
 {
-    ItemPtrUnique new_raw_item = Application::instance()->get_itemFactory().create_raw_Item("Ellipse");
+    ItemPtrUnique new_raw_item = std::make_unique<Item>(ItemType::Ellipse);
     Application::instance()->get_current_slide()->add_item(std::move(new_raw_item));
     update();
 }
 
 void WorkingArea::setTriangleShape()
 {
-    ItemPtrUnique new_raw_item = Application::instance()->get_itemFactory().create_raw_Item("Triangle");
+    ItemPtrUnique new_raw_item = std::make_unique<Item>(ItemType::Triangle);
     Application::instance()->get_current_slide()->add_item(std::move(new_raw_item));
     update();
 }

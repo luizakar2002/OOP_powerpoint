@@ -36,11 +36,6 @@ SlideRenderer    &Application::get_slideRenderer()
     return _slideRenderer;
 }
 
-ItemFactory    &Application::get_itemFactory()
-{
-    return _itemFactory;
-}
-
 QtController    &Application::getQtController()
 {
     return _qtController;

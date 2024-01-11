@@ -6,7 +6,6 @@
 # include "../Document/Document.hpp"
 # include "../Parser/CommandCreator.hpp"
 # include "Renderer/SlideRenderer.hpp"
-# include "../Document/Items/ItemFactory.hpp"
 # include "QtController.hpp"
 
 class Application : public QApplication
@@ -16,7 +15,6 @@ private:
     Document            _document;
     CommandCreator      _commandCreator;
     SlideRenderer       _slideRenderer;
-    ItemFactory         _itemFactory;
     QtController        _qtController;
 
 public:
@@ -30,7 +28,6 @@ public:
     CommandCreator      &get_commandCreator();
 
     SlideRenderer       &get_slideRenderer();
-    ItemFactory         &get_itemFactory();
     QtController        &getQtController();
 
     size_t              &get_current_slide_id();
